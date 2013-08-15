@@ -39,7 +39,7 @@ end
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 gem 'devise'
-
+gem 'cancan'
 
 group :development do
   gem 'better_errors'
