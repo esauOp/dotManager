@@ -1,5 +1,18 @@
+<header>
+	<% if current_usuario %>
+
+        <%=  current_usuario.email %>    
+        <%= link_to "Sign Out", logout_path %>                
+        
+      <% else %>        
+            <%= link_to "Sign Up", new_usuario_registration_path %>
+            <%= link_to "Sign In", new_usuario_session_path %>
+     <% end %>
+</header>
 <h1>Dashboard#index</h1>
 <p>Find me in app/views/dashboard/index.html.erb</p>
-<% if current_usuario == "admin@dom.com" %>
-  You are ADMIN.
+<% if current_usuario %>
+	<% if current_usuario.role == 1 %>
+	  You are ADMIN.
+	<%end %>
 <%end %>

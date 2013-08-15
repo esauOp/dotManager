@@ -1,6 +1,11 @@
 DotManager::Application.routes.draw do
   get "dashboard/index"
-  devise_for :usuarios
+
+  devise_for :usuarios do
+    get "/logout", :to => "devise/sessions#destroy"
+
+  end
+
   #devise_for :usuarios
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
