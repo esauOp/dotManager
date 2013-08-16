@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130814230935) do
+ActiveRecord::Schema.define(version: 20130816154355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "usuarios", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 20130814230935) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "role"
+    t.boolean  "admin",                  default: false
+    t.string   "name",                   default: ""
+    t.string   "last_name",              default: ""
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
