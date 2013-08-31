@@ -1,17 +1,45 @@
-<h2>Sign in</h2>
+<div class="envoltura">
+  <div class="signin">
+    <div class="container">
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+      <!-- <form class="form-signin"> -->
+        <%= form_for(resource, :html => {:class => "form-signin"}, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <!-- <h2 class="form-signin-heading">Please sign in</h2> -->
+        <!-- <input type="text" class="form-control" placeholder="Email address" autofocus=""> -->
+        <div class="agrupador">
+          <%= f.email_field :email, :autofocus => true, :class => "form-control", :placeholder => "Email address" %>
+          <span class="login-icon fui-user" for="login-name"></span>
+        </div>
+        <!-- <input type="password" class="form-control" placeholder="Password"> -->
+        <div class="agrupador">
+          <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
+          <span class="login-icon fui-lock" for="login-pass"></span>
+        </div>
+        <!-- <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label> -->
+        <% if devise_mapping.rememberable? -%>
+          <div>
+              <%= f.label :remember_me, :class => "checkbox" do %>
+                <%= f.check_box :remember_me %>
+                Remember me
+              <% end %>
+            </div>
+        <% end -%>
+        <!-- <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button> -->
+        <%= f.submit "Login", :class => "btn btn-lg btn-primary btn-block" %>
+        <!-- <br>
+        <%= link_to "Sign up", new_registration_path(resource_name), :class => "login-link" %> -->
+        <br>
+        <%= link_to "Lost your password?", new_password_path(resource_name), :class => "login-link" %>
+        <% end %>
+      <!-- </form>  -->
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+    </div>
+  </div> <!-- signin -->
+</div> <!-- envoltura -->
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
+<!--
 <%= render "devise/shared/links" %>
+-->

@@ -11,10 +11,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130816154355) do
+ActiveRecord::Schema.define(version: 20130831145425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories_products", id: false, force: true do |t|
+    t.integer "category_id"
+    t.integer "product_id"
+  end
+
+  create_table "clientes", force: true do |t|
+    t.string   "name"
+    t.string   "adress"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.decimal  "price"
+    t.boolean  "stock"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "task_cats", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "teams", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "teams_usuarios", id: false, force: true do |t|
+    t.integer "team_id"
+    t.integer "usuario_id"
+  end
 
   create_table "usuarios", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -29,7 +77,7 @@ ActiveRecord::Schema.define(version: 20130816154355) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "role"
+    t.integer  "role",                   default: 0
     t.boolean  "admin",                  default: false
     t.string   "name",                   default: ""
     t.string   "last_name",              default: ""

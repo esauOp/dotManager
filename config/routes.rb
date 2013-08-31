@@ -1,8 +1,36 @@
 DotManager::Application.routes.draw do
+  
+  resources :products
+
+  resources :categories
+
+  get "teams/index"
+  get "teams/show"
+  get "teams/new"
+  get "teams/edit"
+  get "task_cats/index"
+  get "task_cats/show"
+  get "task_cats/new"
+  get "task_cats/edit"
+
+  get "clientes/index"
+  get "clientes/show"
+  get "clientes/new"
+  get "clientes/create"
+  get "clientes/edit"
+  get "clientes/update"
+  get "clientes/destroy"
+  
   get "dashboard/index"
+
+  
+  resources :clientes
+  resources :teams
+
 
   devise_for :usuarios do
     get "/logout", :to => "devise/sessions#destroy"
+    # get "/raiz", :to => "devise/sessions#new"
 
   end
 

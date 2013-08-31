@@ -8,6 +8,150 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require_tree .
+ *= require_self
  */
+
+ body {
+	min-height: 200px;
+	height: 100%;
+	padding-top: 50px;
+
+}
+
+#footer {
+	height: 60px;
+	background-color: #f5f5f5;
+	bottom: 0;
+	position: fixed;
+	width: 100%;
+}
+
+.envoltura{
+	/*padding-top: 40px;
+  	padding-bottom: 40px;
+  	background-color: #eee;*/
+	padding: 125px;
+  	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	background-color: #1A88BC;
+	z-index: 0;
+}
+
+/*Sobreescribiendo el color del borde para los controles en el login */
+.form-control {
+  	border: 1px solid #fff;
+}
+
+.envoltura .signin {
+	margin-right: auto;
+	margin-left: auto;
+	width: 430px;
+	padding: 24px 23px 20px;
+	position: relative;
+	background-color: #edeff1;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-o-border-radius: 6px;
+	border-radius: 6px;
+}
+
+/* El siguiente arreglo solo para la señal del globo */
+.envoltura .signin:before {
+	content: '';
+	border-style: solid;
+	border-width: 12px 12px 12px 0;
+	border-color: transparent #edeff1 transparent transparent;
+	height: 0;
+	position: absolute;
+	left: -12px;
+	top: 35px;
+	width: 0;
+	-webkit-transform: rotate(360deg);
+}
+
+.form-signin {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+	margin-bottom: 10px;
+}
+.form-signin .checkbox {
+	font-weight: normal;
+}
+.form-signin .form-control {
+	position: relative;
+	font-size: 16px;
+	height: auto;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+/*
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}*/
+
+/*Clases para el diseño flat del login*/
+.envoltura .form-signin input[type="email"],
+.envoltura .form-signin input[type="password"]{
+	/*border: 2px solid #bdc3c7;
+	border-color: transparent;*/
+	font-size: 17px;
+	padding-bottom: 11px;
+	padding-top: 11px;
+	text-indent: 3px;
+	width: 299px;
+	margin-bottom: 10px !important;
+
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-ms-box-shadow: none;
+	-o-box-shadow: none;
+	box-shadow: none;
+}
+
+ .envoltura .login-screen{
+ 	-webkit-border-radius: 25px;
+ 	-moz-border-radius: 25px;
+ 	-ms-border-radius: 25px;
+ 	-o-border-radius: 25px;
+ 	border-radius: 25px;
+ 	padding: 123px 199px 125px 306px;
+ }
+
+.envoltura .agrupador{
+	position: relative;
+}
+
+/*WebFonts de iconos*/
+.form-signin .login-icon {
+	z-index: 10;
+	color: #bfc9ca;
+	font-size: 16px;
+	position: absolute;
+	right: 13px;
+	top: 14px;
+	-webkit-transition: 0.25s;
+	-moz-transition: 0.25s;
+	-o-transition: 0.25s;
+	transition: 0.25s;
+	-webkit-backface-visibility: hidden;
+}

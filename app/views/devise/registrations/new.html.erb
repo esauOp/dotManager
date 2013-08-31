@@ -1,18 +1,67 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div class="container">
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <div class="login">
+    <div class="login-screen">
+      <div class="login-icon">
+        <img src="images/login/icon.png" alt="Welcome to Mail App" />
+        <h4>Welcome to <small>.Manager</small></h4>
+      </div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+      <div class="login-form">
+      	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  			<%= devise_error_messages! %>
+		  <!-- <div><%= f.label :email %><br />
+		  </div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+		  <div><%= f.label :password %><br />
+		  </div> 
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+		  <div></div> -->
+		
 
+        <div class="control-group">
+          <!-- <input type="text" class="login-field" value="" placeholder="Enter your name" id="login-name" /> -->          
+          <%= f.email_field :email, :autofocus => true, :class => "login-field", :placeholder => "Email" %>
+          <label class="login-field-icon fui-user" for="login-name"></label>
+        </div>
+
+        <div class="control-group">
+          <!-- <input type="password" class="login-field" value="" placeholder="Password" id="login-pass" /> -->
+          <%= f.password_field :password, :class => "login-field", :placeholder => "Password" %>
+          <label class="login-field-icon fui-lock" for="login-pass"></label>
+        </div>
+
+        <div class="control-group">
+          <!-- <input type="password" class="login-field" value="" placeholder="Password" id="login-pass" /> -->
+          <%= f.password_field :password_confirmation, :class => "login-field", :placeholder => "Password confirmation"%>
+          <label class="login-field-icon fui-lock" for="login-pass"></label>
+        </div>
+
+        <% if devise_mapping.rememberable? -%>
+		    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+		<% end -%>
+
+        <!-- <a class="btn btn-primary btn-large btn-block" href="#">Login</a> -->
+        <%= f.submit "Sign in", :class => "btn btn-primary btn-large btn-block" %>
+        <!-- <a class="login-link" href="#">Lost your password?</a> -->
+        <%= link_to "Sign up", new_registration_path(resource_name), :class => "login-link" %>
+        <%= link_to "Lost your password?", new_password_path(resource_name), :class => "login-link" %>
+
+
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+</div> <!-- /container -->
+
+
+
+
+
+<!--
 <%= render "devise/shared/links" %>
+-->

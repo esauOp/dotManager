@@ -1,0 +1,24 @@
+
+<%= form_for(@team) do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+
+  <div class="field">
+    <%= label_tag 'Usuarios' %><br />
+    <% for usuario in Usuario.all do  %>
+    <!-- esta parte estaba dentro de los brackets despues de usuario_ids #{usuario.id} -->
+      <%= check_box_tag "team[usuario_ids][]", usuario.id, @team.usuarios.include?(usuario) %><%= usuario.name %>
+    <% end %>
+  </div>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
