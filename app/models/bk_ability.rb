@@ -1,3 +1,5 @@
+# #Respaldo de archivo creado por cancan 
+
 # class Ability
 #   include CanCan::Ability
 
