@@ -4,7 +4,7 @@ DotManager::Application.routes.draw do
 
   resources :categories
 
-  # get "teams/index"
+  get "teams/index"
   # get "teams/show"
   # get "teams/new"
   # get "teams/edit"
