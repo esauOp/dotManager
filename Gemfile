@@ -34,7 +34,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-#INIT: eortega
+#INIT: esauOp
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'
@@ -46,7 +46,7 @@ group :development do
   gem 'binding_of_caller'  
 end
 
-#END: eortega
+#END: esauOp
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
