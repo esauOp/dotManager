@@ -21,11 +21,12 @@ DotManager::Application.routes.draw do
   # get "clientes/update"
   # get "clientes/destroy"
   
-  # get "dashboard/index"
+  get "dashboard/index"
 
   
   resources :clientes
   resources :teams
+  resources :task_cats
  
 
   devise_for :usuarios do
