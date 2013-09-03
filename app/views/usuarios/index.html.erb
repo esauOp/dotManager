@@ -1,0 +1,19 @@
+<h1>Usuarios#index</h1>
+<p>Find me in app/views/usuarios/index.html.erb</p>
+
+<% @usuarios.each do |user| %>
+	<div class="row">
+		<div class="col-md-1"><%= link_to user.id, team_path(user) %></div>
+		<div class="col-md-1"><%= user.name %></div>
+		<div class="col-md-1"><%= user.last_name %></div>
+		<div class="col-md-4"><%= user.email %></div>
+		<div class="col-md-1"><%= user.admin %></div>
+		<div class="col-md-1"><%= link_to '.edit', edit_team_path(user) %></div>
+		<div class="col-md-1"><%= link_to '.destroy', team_path(user), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %></div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">			
+			<%= link_to 'Nuevo Usuario', new_usuario_path %>
+		</div>
+	</div>
+<%end%>

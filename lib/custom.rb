@@ -1,0 +1,1 @@
+# require "#{File.dirname(FILE)}#{'/devise/CustomFailure'}"
