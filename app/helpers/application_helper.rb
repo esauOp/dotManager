@@ -13,4 +13,10 @@ module ApplicationHelper
 			flash_type.to_s
 		end
 	end
+
+	def route_to_content (text, path)
+		if current_page?(path)
+			text
+		end
+	end
 end

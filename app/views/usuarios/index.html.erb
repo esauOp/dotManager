@@ -1,5 +1,14 @@
-<h1>Usuarios#index</h1>
-<p>Find me in app/views/usuarios/index.html.erb</p>
+
+<div class="catalogo tabla-striped">
+<div class="row header">
+	<div class="col-md-1"><%= @usuarios.human_attribute_name(:id) %></div>
+	<div class="col-md-1"><%= @usuarios.human_attribute_name(:name) %></div>
+	<div class="col-md-1"><%= @usuarios.human_attribute_name(:last_name) %></div>
+	<div class="col-md-4"><%= @usuarios.human_attribute_name(:email) %></div>
+	<div class="col-md-1"><%= @usuarios.human_attribute_name(:admin) %></div>
+	<div class="col-md-1">Edit</div>
+	<div class="col-md-1">Delete</div>
+</div>
 
 <% @usuarios.each do |user| %>
 	<div class="row">
@@ -7,13 +16,34 @@
 		<div class="col-md-1"><%= user.name %></div>
 		<div class="col-md-1"><%= user.last_name %></div>
 		<div class="col-md-4"><%= user.email %></div>
-		<div class="col-md-1"><%= user.admin %></div>
+		<div class="col-md-1"><%= check_box_tag user.id, user.admin, user.admin %></div>
 		<div class="col-md-1"><%= link_to '.edit', edit_team_path(user) %></div>
 		<div class="col-md-1"><%= link_to '.destroy', team_path(user), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %></div>
 	</div>
-	<div class="row">
+	
+<%end%>
+</div>
+<!-- 
+<table class="table table-striped">  
+        <thead>  
+          <tr>  
+            <th>Advantage</th>  
+            <th>Details</th>   
+          </tr>  
+        </thead>  
+        <tbody>  
+          <tr>  
+            <td>aaaaa</td>  
+            <td> bbbbb </td>   
+          </tr>  
+        <tr>
+    <td>    ccccc</td><td> ddddd</td>
+</tr>    
+
+        </tbody>  
+      </table> -->
+<div class="row">
 		<div class="col-md-4">			
 			<%= link_to 'Nuevo Usuario', new_usuario_path %>
 		</div>
 	</div>
-<%end%>

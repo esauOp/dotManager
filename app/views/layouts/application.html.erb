@@ -11,11 +11,14 @@
 	<!-- Opcion sugerida por Devise -->
 	<!-- <p class="notice"></p> -->
    	<!-- <p class="alert"><%= alert %></p> -->
-   	<!-- <div class="alert alert-info"> <%= notice %> </div> -->   	
+   	<!-- <div class="alert alert-info"> <%= notice %> </div> -->
+  
+  <%= render partial: "shared/flash_mensajes", flash: flash %>
+     	
   <% if current_usuario %>
     <%= render partial: "shared/top_menu", flash: flash %>
   <%end %>
-  <%= render partial: "shared/flash_mensajes", flash: flash %>
+  
 
 <div class="container">
 <%= yield %>
@@ -27,6 +30,7 @@
 
 <%= javascript_include_tag "jquery", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "bootstrap", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "bootstrap-dropdown-hover", "data-turbolinks-track" => true %>
 
 <!-- 
 

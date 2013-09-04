@@ -15,33 +15,26 @@
           <!-- <a href="#">Dashboard</a> -->
           <%= link_to "Dashboard", root_path %>
         </li>
-        <li class="<%= "active" if current_page?(clientes_path) %>"><a href="#about">Calendario</a></li>
+        <li class="<%= route_to_content 'active', usuarios_path %>"><a href="#about">Calendario</a></li>
         <li><a href="#contact">Plan</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Proyectos <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-hover="dropdown">Proyectos <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li class="dropdown-header">Nav header</li>
-            <li><a href="#">Separated link</a></li>
-            <li><a href="#">One more separated link</a></li>
+            <li><a href="#">Projects</a></li>
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrar <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-hover="dropdown">Administrar <b class="caret"></b></a>
           <ul class="dropdown-menu">
             
             <li><%= link_to "Usuarios", usuarios_path %></li>
-            <li><%= link_to "Clientes", clientes_path %></li>
             <li><%= link_to "Equipos", teams_path %></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><%= link_to "Clientes", clientes_path %></li>
             <li class="divider"></li>
-            <li class="dropdown-header">Nav header</li>
-            <li><a href="#">Separated link</a></li>
-            <li><a href="#">One more separated link</a></li>
+            <!-- <li class="dropdown-header">Tasks</li> -->
+            <li><a href="#">Tasks Categories</a></li>
+            <li><a href="#">Tasks Priorities</a></li>
+            <li><a href="#">Tasks Statuses</a></li>
           </ul>
         </li>
       </ul>
@@ -68,5 +61,21 @@
   </div>
 </div>
 <div class="navbar-sub-manager">
+  <h2 class="menu-subtitle">
+    .Manager
+  </h2>
+  <h2 class="navbar-right">
+      <%= 
+
+      # if current_page?(root_path)
+      #   "Dashboard"
+      # elsif current_page?(usuarios_path)
+      #   "Usuarios"
+      # end
+
+      route_to_content('Dashboard', root_path) 
+        %>
+        <%= route_to_content('Usuarios', usuarios_path) %>
+  </h2>
   
 </div>
