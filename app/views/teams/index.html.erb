@@ -1,12 +1,31 @@
-<h1>Teams#index</h1>
-<p>Find me in app/views/teams/index.html.erb</p>
 
-<% @teams.each do |team| %>
-	<div class="row">
-		<div class="small-2 large-1 columns"><%= link_to team.id, team_path(team) %></div>
-		<div class="small-2 large-2 columns"><%= team.name %></div>
-		<div class="small-2 large-4 columns"><%= team.description %></div>
-		<div class="small-2 large-1 columns"><%= link_to '.edit', edit_team_path(team) %></div>
-		<div class="small-2 large-1 columns"><%= link_to '.destroy', team_path(team), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %></div>
+<div class="catalogo tabla-striped">			 
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th><%= @teams.human_attribute_name(:id) %></th>
+				<th><%= @teams.human_attribute_name(:name) %></th>
+				<th><%= @teams.human_attribute_name(:description) %></th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>		
+		<% @teams.each do |team| %>
+			<tr>
+				<td><%= link_to team.id, team_path(team) %></td>
+				<td><%= team.name %></td>
+				<td><%= team.description %></td>
+				<td><%= link_to '.edit', edit_team_path(team) %></td>
+				<td><%= link_to '.destroy', team_path(team), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %></td>
+			</tr>		
+		<%end%>
+		</tbody>
+	</table>
+</div>
+
+<div class="row">
+	<div class="col-md-4">			
+		<%= link_to 'Nuevo', new_team_path %>
 	</div>
-<%end%>
+</div>

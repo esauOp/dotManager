@@ -20,7 +20,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-hover="dropdown">Proyectos <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Projects</a></li>
+            <li><%= link_to "Proyectos", projects_path %></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -32,9 +32,9 @@
             <li><%= link_to "Clientes", clientes_path %></li>
             <li class="divider"></li>
             <!-- <li class="dropdown-header">Tasks</li> -->
-            <li><a href="#">Tasks Categories</a></li>
-            <li><a href="#">Tasks Priorities</a></li>
-            <li><a href="#">Tasks Statuses</a></li>
+            <li><%= link_to "Tasks Categories", task_cats_path%></li>
+            <li><%= link_to "Tasks Priorities", task_priorities_path%></li>
+            <li><%= link_to "Tasks Statuses", task_statuses_path%></li>
           </ul>
         </li>
       </ul>
@@ -64,6 +64,7 @@
   <h2 class="menu-subtitle">
     .Manager
   </h2>
+  
   <h2 class="navbar-right">
       <%= 
 

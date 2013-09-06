@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  date_ini: 2013-09-05 13:29:37
+  date_end: 2013-09-05 13:29:37
+  milestone: false
+  estimated_time: 9.99
+  description: MyText
+  actual_time: 9.99
+
+two:
+  name: MyString
+  date_ini: 2013-09-05 13:29:37
+  date_end: 2013-09-05 13:29:37
+  milestone: false
+  estimated_time: 9.99
+  description: MyText
+  actual_time: 9.99

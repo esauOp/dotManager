@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require bootstrap-datepicker
  *= require_self
  */
 
@@ -26,7 +27,7 @@
 	height: 60px;
 	background-color: #fff; /*#f5f5f5;*/
 	bottom: 0;
-	position: fixed;
+	/*position: fixed;*/
 	width: 100%;
 }
 
@@ -42,6 +43,10 @@
 	left: 0;
 	background-color: #23262B; /*#212a31 #273849*/
 	z-index: 0;
+}
+
+.dotcontainer{
+	margin-top: 25px;
 }
 
 /*Sobreescribiendo el color del borde para los controles en el login */
@@ -258,7 +263,7 @@ a:focus {
 
 .navbar-sub-manager {
   padding: 20px 150px 20px 50px;
-  margin-bottom: 25px;
+  /*margin-bottom: 25px;*/
   font-size: 21px;
   font-weight: 200;
   line-height: 2.1428571435;
@@ -322,3 +327,93 @@ a:focus {
 	border-radius: 5px;
 	background-color: #fff;
 }
+
+.messages{
+	/*float: left;*/
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font-size: 13px;
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.messages.success{
+	color: #dff0d8;
+}
+
+.messages.error{
+	color: #f2dede;
+}
+
+.messages.block{
+	color: #d9edf7;
+}
+
+.messages.info{
+	color: #d9edf7;
+}
+
+
+.alert-success {
+	background-image: -webkit-gradient(linear, left 0%, left 100%, from(#dff0d8), to(#c8e5bc));
+	background-image: -webkit-linear-gradient(top, #dff0d8, 0%, #c8e5bc, 100%);
+	background-image: -moz-linear-gradient(top, #dff0d8 0%, #c8e5bc 100%);
+	background-image: linear-gradient(to bottom, #dff0d8 0%, #dff0d8 100%);
+	background-repeat: repeat-x;
+	border-color: #dff0d8;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdff0d8', endColorstr='#ffc8e5bc', GradientType=0);
+
+	color: #468847;
+	background-color: #dff0d8;
+}
+
+.alert-info {	
+	background-image: -webkit-gradient(linear, left 0%, left 100%, from(#d9edf7), to(#b9def0));
+	background-image: -webkit-linear-gradient(top, #d9edf7, 0%, #b9def0, 100%);
+	background-image: -moz-linear-gradient(top, #d9edf7 0%, #b9def0 100%);
+	background-image: linear-gradient(to bottom, #d9edf7 0%, #d9edf7 100%);
+	background-repeat: repeat-x;
+	border-color: #d9edf7;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd9edf7', endColorstr='#ffb9def0', GradientType=0);
+
+	color: #3a87ad;
+	background-color: #d9edf7;
+}
+
+.alert-warning {
+	background-image: -webkit-gradient(linear, left 0%, left 100%, from(#fcf8e3), to(#f8efc0));
+	background-image: -webkit-linear-gradient(top, #fcf8e3, 0%, #f8efc0, 100%);
+	background-image: -moz-linear-gradient(top, #fcf8e3 0%, #f8efc0 100%);
+	background-image: linear-gradient(to bottom, #fcf8e3 0%, #fcf8e3 100%);
+	background-repeat: repeat-x;
+	border-color: #fcf8e3;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffcf8e3', endColorstr='#fff8efc0', GradientType=0);
+
+	color: #c09853;
+	background-color: #fcf8e3;
+}
+
+.alert-danger {
+	background-image: -webkit-gradient(linear, left 0%, left 100%, from(#f2dede), to(#e7c3c3));
+	background-image: -webkit-linear-gradient(top, #f2dede, 0%, #e7c3c3, 100%);
+	background-image: -moz-linear-gradient(top, #f2dede 0%, #e7c3c3 100%);
+	background-image: linear-gradient(to bottom, #f2dede 0%, #f2dede 100%);
+	background-repeat: repeat-x;
+	border-color: #f2dede;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff2dede', endColorstr='#ffe7c3c3', GradientType=0);
+
+	color: #b94a48;
+	background-color: #f2dede;
+}
+
+/*
+bootstrap-datepicker
+*/

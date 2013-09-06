@@ -1,5 +1,6 @@
 // Some general UI pack related JS
 // Extend JS String with repeat method
+//= require bootstrap-datepicker
 String.prototype.repeat = function(num) {
     return new Array(num + 1).join(this);
 };
@@ -66,3 +67,4 @@ String.prototype.repeat = function(num) {
   });
   
 })(jQuery);
+

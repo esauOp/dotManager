@@ -1,0 +1,27 @@
+<h1>Listing task_priorities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @task_priorities.each do |task_priority| %>
+      <tr>
+        <td><%= task_priority.name %></td>
+        <td><%= link_to 'Show', task_priority %></td>
+        <td><%= link_to 'Edit', edit_task_priority_path(task_priority) %></td>
+        <td><%= link_to 'Destroy', task_priority, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Task priority', new_task_priority_path %>

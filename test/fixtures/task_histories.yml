@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  task_id: 1
+  version: 1
+  time: 9.99
+
+two:
+  task_id: 1
+  version: 1
+  time: 9.99

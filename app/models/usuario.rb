@@ -9,5 +9,7 @@ class Usuario < ActiveRecord::Base
   # # Setup accessible (or protected) attributes for your model
   # attr_accessible :email, :password, :password_confirmation
   has_and_belongs_to_many :teams
+  # has_many :projects
+  has_and_belongs_to_many :projects
 
 end

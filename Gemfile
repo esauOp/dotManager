@@ -40,6 +40,7 @@ end
 gem 'pg'
 gem 'devise'
 # gem 'cancan'
+gem "bootstrap-datepicker-rails"
 
 group :development do
   gem 'better_errors'

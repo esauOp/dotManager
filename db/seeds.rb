@@ -23,10 +23,9 @@ puts 'Admin user created'
 # end
 
 task_categorias = [
-   'Closed',
-   'Completed',
-   'New',
-   'In Progress'
+   'Bug',
+   'Design',
+   'Development'
 ]
 
 task_categorias.each do |name|
@@ -41,4 +40,29 @@ equipos = [
 
 equipos.each do |name, desc|
 	Team.create([{name: name, description: desc}])
+end
+
+
+task_statuses = [
+   'Closed',
+   'Completed',
+   'In Progress',
+   'New'
+]
+
+task_statuses.each do |name|
+	puts name
+  TaskStatus.create([{ name: name }])
+end
+
+
+task_priorities = [
+   'High',
+   'Normal',
+   'Low'
+]
+
+task_priorities.each do |name|
+	puts name
+  TaskPriority.create([{ name: name }])
 end

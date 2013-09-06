@@ -1,5 +1,6 @@
 DotManager::Application.routes.draw do
-  
+    
+
   # categories and products are a DEMO
   # resources :products
   # resources :categories
@@ -9,6 +10,12 @@ DotManager::Application.routes.draw do
   resources :clientes
   resources :teams
   resources :task_cats
+  resources :task_priorities
+  resources :task_statuses
+  resources :projects do
+    resources :tasks  
+  end
+  
 
   devise_for :usuarios do
     get "/logout", :to => "devise/sessions#destroy"

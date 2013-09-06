@@ -30,7 +30,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
-        flash[:notice] = 'BlogPost was successfully created.'
+        flash[:notice] = 'Team was successfully created.'
         format.html {redirect_to(root_path)}
       else
         format.html {render "new"}

@@ -1,0 +1,54 @@
+
+<%= 
+#form_for([@project, @project.tasks.build]) do |f| 
+form_for([@project,@task]) do |f| 
+	%>
+  
+  <div class="field">
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :date_ini %><br>
+    <%= f.text_field :date_ini, "data-behaviour"=>'datepicker', :readonly => true %>
+  </div>
+  <div class="field">
+    <%= f.label :date_end %><br>    
+    <%= f.text_field :date_end, "data-behaviour"=>'datepicker', :readonly => true %>
+    <%= #f.datetime_select :date_end 
+    %>
+  </div>
+  <div class="field">
+    <%= f.label :milestone %><br>
+    <%= f.check_box :milestone %>
+  </div>
+  <div class="field">
+    <%= f.label :estimated_time %><br>
+    <%= f.text_field :estimated_time %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :task_status_id %><br>
+    <%= f.collection_select :task_status_id, TaskStatus.all, :id, :name, prompt: true %>
+  </div>
+  <div class="field">
+    <%= f.label :task_cat_id %><br>
+    <%= f.collection_select :task_cat_id, TaskCat.all, :id, :name, prompt: true %>
+  </div>
+  <div class="field">
+    <%= f.label :task_priority_id %><br>
+    <%= f.collection_select :task_priority_id, TaskPriority.all, :id, :name, prompt: true %>
+  </div>
+  <div class="field">
+    <%= f.label :assignee_id %><br>
+    <%= f.collection_select :assignee_id, Usuario.all, :id, :name, prompt: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

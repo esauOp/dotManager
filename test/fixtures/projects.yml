@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  date_ini: 2013-09-05 13:12:59
+  date_end: 2013-09-05 13:12:59
+  description: MyText
+  cost_hr: 9.99
+
+two:
+  name: MyString
+  date_ini: 2013-09-05 13:12:59
+  date_end: 2013-09-05 13:12:59
+  description: MyText
+  cost_hr: 9.99

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130831145425) do
+ActiveRecord::Schema.define(version: 20130905201751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,8 +46,64 @@ ActiveRecord::Schema.define(version: 20130831145425) do
     t.datetime "updated_at"
   end
 
+  create_table "projects", force: true do |t|
+    t.string   "name"
+    t.datetime "date_ini"
+    t.datetime "date_end"
+    t.text     "description"
+    t.decimal  "cost_hr"
+    t.integer  "cliente_id"
+    t.integer  "leader_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects_usuarios", id: false, force: true do |t|
+    t.integer "project_id"
+    t.integer "usuario_id"
+  end
+
   create_table "task_cats", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "task_histories", force: true do |t|
+    t.integer  "task_id"
+    t.integer  "version"
+    t.decimal  "time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "task_priorities", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "task_statuses", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tasks", force: true do |t|
+    t.string   "name"
+    t.datetime "date_ini"
+    t.datetime "date_end"
+    t.boolean  "milestone"
+    t.decimal  "estimated_time"
+    t.text     "description"
+    t.decimal  "actual_time"
+    t.boolean  "running"
+    t.integer  "version"
+    t.integer  "project_id"
+    t.integer  "task_status_id"
+    t.integer  "task_cat_id"
+    t.integer  "task_priority_id"
+    t.integer  "assignee_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
