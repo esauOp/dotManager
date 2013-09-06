@@ -5,11 +5,12 @@
 <h4>Tasks</h4>
 <%= render @project.tasks %>
 
-<h4>New</h4>
 <%= 
 #render "tasks/form" 
 %>
-<%= link_to 'New Task', new_project_task_path(@project) %> 
-<br>
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+
+<%  if current_usuario.admin %>
+	<%= link_to 'Edit', edit_project_path(@project) %> |
+	<%= link_to 'New Task', new_project_task_path(@project) %> 
+<%  end %>
+

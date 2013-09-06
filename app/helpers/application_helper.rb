@@ -34,4 +34,28 @@ module ApplicationHelper
 			text
 		end
 	end
+
+	def route_title
+		if current_page?(root_path)
+			"Dashboard"
+		elsif current_page?(usuarios_path)
+			"Users"
+		elsif current_page?(teams_path)			
+			"Teams"
+		elsif current_page?(clientes_path)			
+			"Clients"
+		elsif current_page?(task_cats_path)			
+			"Task Categories"
+		elsif current_page?(task_priorities_path)			
+			"Task Priorities"
+		elsif current_page?(task_statuses_path)			
+			"Task Statuses"
+		elsif current_page?(projects_path)			
+			"Projects"
+		else
+			":D"
+		end
+	end
+
+
 end
