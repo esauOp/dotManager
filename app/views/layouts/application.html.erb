@@ -10,24 +10,25 @@
 <body>
 	<!-- Opcion sugerida por Devise -->
 	<!-- <p class="notice"></p> -->
-   	<!-- <p class="alert"><%= alert %></p> -->
-   	<!-- <div class="alert alert-info"> <%= notice %> </div> -->
-  	
-  <% if current_usuario %>
-    <%= render partial: "shared/top_menu", flash: flash %>
-  <%end %>
-  
-  <%= render partial: "shared/flash_mensajes", flash: flash %>
-   
+ 	<!-- <p class="alert"><%= alert %></p> -->
+ 	<!-- <div class="alert alert-info"> <%= notice %> </div> -->
+	
+  <div class="wrapper">
+    <% if current_usuario %>
+      <%= render partial: "shared/top_menu", flash: flash %>
+    <%end %>
+    
+    <%= render partial: "shared/flash_mensajes", flash: flash %>
+     
 
-<div class="container dotcontainer">
-<%= yield %>
+  <div class="container dotcontainer">
+  <%= yield %>
+  </div>
+
+    <% if current_usuario %>
+      <%= render "shared/footer" %>
+    <%end %>
 </div>
-
-  <% if current_usuario %>
-    <%= render "shared/footer" %>
-  <%end %>
-
 <%= javascript_include_tag "jquery", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "bootstrap", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "bootstrap-dropdown-hover", "data-turbolinks-track" => true %>

@@ -47,6 +47,7 @@
         <% if current_usuario %>
           <li> <a href="#"><%=  current_usuario.name %> </a>
           </li>
+          <li style="padding:15px 0;">|</li>
           <li>
           <%= link_to "Sign Out", logout_path %>   
           </li>
