@@ -1,2 +1,18 @@
-<h1>Tasks#show</h1>
-<p>Find me in app/views/tasks/show.html.erb</p>
+
+<div class="panel panel-default">
+	<div class="panel-heading">Details</div>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td><%= @task.id %></td>
+					<td><%= @task.name %></td>
+					<td><%= @task.estimated_time %></td>
+					<td><%= @task.description %></td>
+					<td><%= @task.actual_time %></td>
+					<td><%= @task.milestone %></td>
+				</tr>
+			</tbody>
+		</table>
+</div>
+
+<%= link_to 'Start', root_path, :class => "btn btn-success" %>

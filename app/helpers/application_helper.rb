@@ -52,8 +52,19 @@ module ApplicationHelper
 			"Task Statuses"
 		elsif current_page?(projects_path)			
 			"Projects"
+		elsif current_page?(project_path)
+			@project.name.to_s
+		elsif current_page?(project_task_path)
+			@task.name.to_s
 		else
-			":D"
+			#Rails.root.to_s
+			arr = request.original_fullpath.to_s.gsub(/-+/, ' ').split("/")
+			i = arr.length
+
+			arr[i-1].to_s.slice(0,1).capitalize + arr[i-1].to_s.slice(1..-1)
+
+			# .downcase.gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").strip
+			# .gsub(/\s+/, '-').gsub(/[^\w\-]/, '')
 		end
 	end
 
