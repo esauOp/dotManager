@@ -432,3 +432,25 @@ a:focus {
 /*
 bootstrap-datepicker
 */
+
+/*Timer*/
+.timermenu{
+	font-size: 15px;
+	color: #fff;
+}
+
+.timermenu label{
+	padding-right: 10px;
+	font-weight: lighter;
+}
+
+.timermenu input{
+	width: 65px;
+	border: none;
+	background-color: transparent;
+	font-size: 15px;
+	color: #fff;
+}
+.timermenu span{
+	font-weight: lighter;
+}

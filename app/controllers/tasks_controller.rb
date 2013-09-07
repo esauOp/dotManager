@@ -33,7 +33,10 @@ class TasksController < ApplicationController
       @task.running = false
 
       @taskhistory = TaskHistory.where(task_id: @task.id, version: @task.version).first_or_create
-      @taskhistory.time = @taskhistory.time.to_i + 1
+      @taskhistory.time = @taskhistory.time.to_f + 1
+
+      @task.actual_time = @task.actual_time.to_f + @taskhistory.time.to_f
+
       @taskhistory.update_attributes(:time => @taskhistory.time)
     else
       @task.running = true
@@ -47,7 +50,7 @@ class TasksController < ApplicationController
       @taskhistory.save
     end
 
-    if @task.update_attributes(:running => @task.running, :version => @task.version)
+    if @task.update_attributes(:actual_time => @task.actual_time, :running => @task.running, :version => @task.version)
       redirect_to project_task_path(@task.project_id, @task.id), flash: {notice: 'Task clicked!.'}
       #   format.html { redirect_to @task, notice: 'Product was successfully updated.' }
       #   format.json { head :no_content }

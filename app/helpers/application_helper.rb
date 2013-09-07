@@ -38,7 +38,11 @@ module ApplicationHelper
 	def route_title
 		if current_page?(root_path)
 			"Dashboard"
-		elsif current_page?(usuarios_path)
+		elsif current_page?(usuarios_path)			
+			"Teams"
+		elsif params[:controller] == 'usuarios/new'
+			"Users"
+		elsif params[:controller] == 'usuarios/edit'
 			"Users"
 		elsif current_page?(teams_path)			
 			"Teams"
@@ -52,9 +56,9 @@ module ApplicationHelper
 			"Task Statuses"
 		elsif current_page?(projects_path)			
 			"Projects"
-		elsif current_page?(project_path)
+		elsif params[:controller] == 'projects'
 			@project.name.to_s
-		elsif current_page?(project_task_path)
+		elsif params[:controller] == 'tasks'
 			@task.name.to_s
 		else
 			#Rails.root.to_s
@@ -68,5 +72,22 @@ module ApplicationHelper
 		end
 	end
 
-
+	def task_timer
+		@tasktimer = Task.where(assignee_id: current_usuario.id, running: true).first #Task.find(1)
+		#@tasktimer = Task.where(assignee_id: current_usuario.id, running: true).first_or_create
+		
+		# # #  do
+		# # # 	tag("label")
+		# # # 	tag("input", value: @task.actual_time.to_s, class: "time")
+		# # # end
+		# # html = []
+		# # html << "<div> #{@task.name}</div>"
+		if !@tasktimer.blank?
+			content_tag(:div, class: "timermenu") do
+				content_tag(:label, "Running task: " + @tasktimer.name + " - Time: ") +
+				content_tag(:input, '', id: "tasktimervalue", value: @tasktimer.actual_time) +
+				content_tag(:span, 'min')
+			end
+		end
+	end
 end
