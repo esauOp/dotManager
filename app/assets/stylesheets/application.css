@@ -445,7 +445,7 @@ bootstrap-datepicker
 }
 
 .timermenu input{
-	width: 65px;
+	/*width: 65px;*/
 	border: none;
 	background-color: transparent;
 	font-size: 15px;

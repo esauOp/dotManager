@@ -83,9 +83,15 @@ module ApplicationHelper
 		# # html = []
 		# # html << "<div> #{@task.name}</div>"
 		if !@tasktimer.blank?
+			time = @tasktimer.updated_at - 5.hour# - 18000 - Time.now
+			stime = time.strftime "%H:%M:%S"
+			#hhmmss
+			#75000 = 8hr50min
+			#.strftime "%Y-%m-%d"
+
 			content_tag(:div, class: "timermenu") do
 				content_tag(:label, "Running task: " + @tasktimer.name + " - Time: ") +
-				content_tag(:input, '', id: "tasktimervalue", value: @tasktimer.actual_time) +
+				content_tag(:input, '', id: "tasktimervalue", value: stime) +
 				content_tag(:span, 'min')
 			end
 		end
