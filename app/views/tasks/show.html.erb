@@ -10,9 +10,12 @@
 					<td><%= @task.description %></td>
 					<td><%= @task.actual_time %></td>
 					<td><%= @task.milestone %></td>
+					<td><%= @task.running %></td>
 				</tr>
 			</tbody>
 		</table>
 </div>
 
-<%= link_to 'Start', root_path, :class => "btn btn-success" %>
+
+<%= link_to("Start", {:action => :run_stop, :id => @task}, :method => :put)%>
+<%= button_to 'Run', run_stop_project_task_path(:id => @task), :remote => true, :method => :put, :class => "btn btn-info" %>

@@ -13,7 +13,11 @@ DotManager::Application.routes.draw do
   resources :task_priorities
   resources :task_statuses
   resources :projects do
-    resources :tasks  
+    resources :tasks do
+      member do
+        put 'run_stop'
+      end
+    end  
   end
   
 
