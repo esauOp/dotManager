@@ -1,14 +1,15 @@
 <tr>
 	<td><%= task.id %></td>
 	<td><%= task.name %></td>
-	
 	<td style="text-align: right;">
 		<div class="btn-group btn-group-xs"> 
+			<% if task.assignee_id == current_usuario.id %>
 			<%= link_to 'Show', project_task_path(@project, task), :class => "btn btn-info" %>
 			<%= link_to 'Edit', edit_project_task_path(@project, task), :class => "btn btn-info" %>
 			<%= link_to 'Destroy', [task.project, task],
 	       method: :delete,
 	       data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+	       <% end %>
        </div>
    </td>
 </tr>

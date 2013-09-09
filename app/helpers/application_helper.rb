@@ -59,7 +59,9 @@ module ApplicationHelper
 		elsif params[:controller] == 'projects'
 			@project.name.to_s
 		elsif params[:controller] == 'tasks'
-			@task.name.to_s
+			if !@task.blank?
+				@task.name.to_s
+			end
 		else
 			#Rails.root.to_s
 			arr = request.original_fullpath.to_s.gsub(/-+/, ' ').split("/")
