@@ -4,8 +4,12 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    #@projects = Project.all
-    @projects = Project.where(assignee_id: current_usuario.id, running: true)
+    if current_usuario.admin      
+      @projects = Project.all
+    else
+    #@projects = Project.all(:include => :usuarios, :conditions => ["usuarios.id = ?", current_usuario.id])     
+      @projects = Project.includes(:usuarios).where(usuarios: { id:current_usuario.id })
+    end
   end
 
   # GET /projects/1
