@@ -83,7 +83,8 @@ module ApplicationHelper
 		# # html = []
 		# # html << "<div> #{@task.name}</div>"
 		if !@tasktimer.blank?
-			time = @tasktimer.updated_at - 5.hour# - 18000 - Time.now
+			time =  Time.zone.now - @tasktimer.updated_at.localtime # - 5.hour# - 18000 - Time.now
+			time = Time.new(2013,1) + time
 			stime = time.strftime "%H:%M:%S"
 			#hhmmss
 			#75000 = 8hr50min

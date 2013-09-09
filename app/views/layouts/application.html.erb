@@ -12,6 +12,10 @@
 	<!-- <p class="notice"></p> -->
  	<!-- <p class="alert"><%= alert %></p> -->
  	<!-- <div class="alert alert-info"> <%= notice %> </div> -->
+
+  <%  if !current_usuario %>
+    <%= yield :login %>
+  <%  else %>
 	
   <div class="wrapper">
     <% if current_usuario %>
@@ -29,6 +33,8 @@
       <%= render "shared/footer" %>
     <%end %>
 </div>
+<%  end %>
+
 <%= javascript_include_tag "jquery", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "bootstrap", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "bootstrap-dropdown-hover", "data-turbolinks-track" => true %>
