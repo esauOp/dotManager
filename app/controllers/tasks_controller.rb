@@ -32,13 +32,29 @@ class TasksController < ApplicationController
     if @task.running?
       @task.running = false
 
-      @taskhistory = TaskHistory.where(task_id: @task.id, version: @task.version).first_or_create
-      @taskhistory.time = @taskhistory.time.to_f + 1
+      @taskhistory = TaskHistory.where(task_id: @task.id, version: @task.version).first
+      @taskhistory.time = (Time.zone.now - @taskhistory.created_at.localtime) / 3600 #@taskhistory.time.to_f + 1
 
       @task.actual_time = @task.actual_time.to_f + @taskhistory.time.to_f
 
       @taskhistory.update_attributes(:time => @taskhistory.time)
     else
+      # @tasksupdate = Task.where(:assignee_id => current_usuario)
+      # @tasksupdate.running = false
+      # @tasksupdate.update_attributes(:running => @tasksupdate.running)
+      # Task.update_all("running = false", "assignee_id = " + current_usuario.id.to_s)
+      @lasttask = Task.where(assignee_id: current_usuario.id, running: true).first
+      if !@lasttask.blank?
+        @lasthistory = TaskHistory.where(task_id: @lasttask.id, version: @lasttask.version).first_or_create
+        @lasthistory.time = (Time.zone.now - @lasthistory.created_at.localtime) / 3600
+
+        @lasttask.actual_time = @lasttask.actual_time.to_f + @lasthistory.time.to_f
+
+        @lasthistory.update_attributes(:time => @lasthistory.time)
+
+        @lasttask.update_attributes(:actual_time => @lasttask.actual_time, :running => false)
+      end
+
       @task.running = true
       @task.version = @task.version.to_i + 1
 
@@ -48,6 +64,7 @@ class TasksController < ApplicationController
       @taskhistory.time = 0
 
       @taskhistory.save
+      
     end
 
     if @task.update_attributes(:actual_time => @task.actual_time, :running => @task.running, :version => @task.version)

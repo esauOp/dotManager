@@ -91,7 +91,7 @@ module ApplicationHelper
 			#.strftime "%Y-%m-%d"
 
 			content_tag(:div, class: "timermenu") do
-				content_tag(:label, "Running task: " + @tasktimer.name + " - Time: ") +
+				content_tag(:label, link_to("Running task: " + @tasktimer.name.to_s + " - Time: ", project_task_path(@tasktimer.project_id, @tasktimer.id))) +
 				content_tag(:input, '', id: "tasktimervalue", value: stime) +
 				content_tag(:span, 'min')
 			end

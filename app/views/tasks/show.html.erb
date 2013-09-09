@@ -19,4 +19,8 @@
 <!-- 
 <%= link_to("Start", {:action => :run_stop, :id => @task}, :method => :put)%>
  -->
-<%= button_to 'Run', run_stop_project_task_path(:id => @task), :remote => true, :method => :put, :class => "btn btn-info" %>
+ <% if !@task.running %>
+	<%= button_to 'Start', run_stop_project_task_path(:id => @task), :remote => true, :method => :put, :class => "btn btn-info" %>
+<% else %>
+	<%= button_to 'Stop', run_stop_project_task_path(:id => @task), :remote => true, :method => :put, :class => "btn btn-danger" %>
+<% end %>
