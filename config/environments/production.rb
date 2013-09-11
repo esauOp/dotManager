@@ -80,7 +80,7 @@ DotManager::Application.configure do
 
   # ActionMailer Config
   config.action_mailer.perform_deliveries = false
-  config.action_mailer.default_url_options = { :host => 'sprintapp.com' }
+  config.action_mailer.default_url_options = { :host => 'hosting.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address => 'smtp.sendgrid.net',
