@@ -2,6 +2,7 @@ defaults: &defaults
   email:
     notifications_mail: 'notifications@doter.mx'
     support_mail: 'support@doter.mx'
+  test: 'notifications@mail.com'
 
 development:
   <<: *defaults

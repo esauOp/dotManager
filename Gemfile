@@ -42,6 +42,9 @@ gem 'devise'
 # gem 'cancan'
 gem "bootstrap-datepicker-rails"
 
+# Settingslogic is a simple configuration / settings solution.
+gem 'settingslogic'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'  

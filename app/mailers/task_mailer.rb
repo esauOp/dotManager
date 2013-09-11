@@ -1,5 +1,5 @@
 class TaskMailer < ActionMailer::Base
-  default from: "notification@doter.mx" #Settings.email.notifications_mail # 
+  default from: Settings.email.notifications_mail #"notification@mail.com"
 
   def notification_email(user)
   	@user = user

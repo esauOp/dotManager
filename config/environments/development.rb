@@ -37,4 +37,14 @@ DotManager::Application.configure do
    location: '/usr/sbin/sendmail',
    arguments: '-i -t'
   }
+
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   :address => 'smtpout.secureserver.net',
+  #   :port => '80',
+  #   :authentication => :plain,
+  #   :user_name => 'user@mail.com',
+  #   :password => 'password',
+  #   :domain => 'mail.com'
+  # }
 end
