@@ -4,7 +4,7 @@ class TasksController < ApplicationController
 
   def new  	  	
     @project = Project.find(params[:project_id])
-    @task = Task.new
+    @task = Task.new    
   end
 
   def show
@@ -19,6 +19,7 @@ class TasksController < ApplicationController
   	@project = Project.find(params[:project_id])
     #@comment = @blog_post.comments.build(params[:comment])
     @task = @project.tasks.create(task_params)
+    TaskMailer.notification_email(current_usuario).deliver
 
     if @task.save
       redirect_to project_path(@project_path), flash: { notice: 'Your task was asigned.'}
