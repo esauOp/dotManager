@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :require_admin
+  before_filter :require_admin, only: [:new, :edit, :update, :destroy]
   before_action :set_project, only: [:show, :edit, :update, :destroy]  
 
   # GET /projects
@@ -88,7 +88,7 @@ class ProjectsController < ApplicationController
         if current_usuario.admin?
           true
         else
-          redirect_to root_path(), flash: { notice: "you don't have permission to access."}
+          redirect_to root_path(), flash: { error: "you don't have permission to access."}
         end
       end
     end

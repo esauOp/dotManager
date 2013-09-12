@@ -11,11 +11,14 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs
-//= require bootstrap-datepicker
-//= require turbolinks
+// require jquery_ujs
 //= require bootstrap
+//= require turbolinks
 //= require_tree .
+// require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.es
+
 
 
 var time  = document.getElementById("tasktimervalue");

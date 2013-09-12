@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:destroy]
   #before_filter :require_admin, only: [:destroy]
-  before_filter :require_owner, only: [:edit, :update]  
+  before_filter :require_owner, only: [:edit, :update]
   
 
   def index
@@ -82,7 +82,7 @@ class TasksController < ApplicationController
     end
 
     if @task.update_attributes(:actual_time => @task.actual_time, :running => @task.running, :version => @task.version)
-      redirect_to project_task_path(@task.project_id, @task.id), flash: {notice: 'Task clicked!.'}
+      redirect_to project_task_path(@task.project_id, @task.id) #, flash: {notice: 'Task clicked!.'}
       #   format.html { redirect_to @task, notice: 'Product was successfully updated.' }
       #   format.json { head :no_content }
       # else
@@ -113,7 +113,7 @@ class TasksController < ApplicationController
     def require_owner
       @task = Task.find(params[:id])
       if current_usuario
-        if @task.assignee_id == current_usuario.id
+        if current_usuario.admin? || @task.assignee_id == current_usuario.id
           true
         else
           redirect_to root_path, flash: { error: "You don't have permission to do this."}
