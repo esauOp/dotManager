@@ -1,5 +1,6 @@
 class UsuariosController < ApplicationController
-  skip_before_filter :require_login
+  before_filter :require_admin
+
   def index
   	@usuarios = Usuario.all
   end
@@ -38,4 +39,16 @@ class UsuariosController < ApplicationController
    def usuario_params
       params.require(:usuario).permit(:name, :last_name, :password, :email, :admin)
     end
+
+    def require_admin
+      if current_usuario      
+        if current_usuario.admin?
+          true
+        else
+          redirect_to root_path(), flash: { notice: "you don't have permission to access."}
+        end
+      end
+
+    end
+
 end

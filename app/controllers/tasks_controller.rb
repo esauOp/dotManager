@@ -1,4 +1,9 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: [:destroy]
+  #before_filter :require_admin, only: [:destroy]
+  before_filter :require_owner, only: [:edit, :update]  
+  
+
   def index
   end
 
@@ -26,6 +31,14 @@ class TasksController < ApplicationController
     else
       redirect_to project_path(@project_path), flash: { error: 'Failes to post your comment, ja!'}
     end   
+  end
+
+  def destroy
+    @task.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.json { head :no_content }
+    end
   end
 
   def run_stop
@@ -81,6 +94,31 @@ class TasksController < ApplicationController
   private
     def task_params
       params.require(:task).permit(:name, :date_ini, :date_end, :milestone, :estimated_time, :description, :task_status_id, :task_cat_id, :task_priority_id, :assignee_id )
+    end
+
+    def set_task
+      @task = Task.find(params[:id])
+    end
+
+    def require_admin
+      if current_usuario
+        if current_usuario.admin?
+          true
+        else
+          redirect_to root_path(), flash: { notice: "You don't have permission to do this."}
+        end
+      end
+    end
+
+    def require_owner
+      @task = Task.find(params[:id])
+      if current_usuario
+        if @task.assignee_id == current_usuario.id
+          true
+        else
+          redirect_to root_path, flash: { error: "You don't have permission to do this."}
+        end
+      end
     end
 
     # def run_params

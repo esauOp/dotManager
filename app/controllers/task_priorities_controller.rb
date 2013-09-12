@@ -1,4 +1,5 @@
 class TaskPrioritiesController < ApplicationController
+  before_filter :require_admin
   before_action :set_task_priority, only: [:show, :edit, :update, :destroy]
 
   # GET /task_priorities
@@ -70,5 +71,15 @@ class TaskPrioritiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_priority_params
       params.require(:task_priority).permit(:name)
+    end
+
+    def require_admin
+      if current_usuario      
+        if current_usuario.admin?
+          true
+        else
+          redirect_to root_path(), flash: { notice: "you don't have permission to access."}
+        end
+      end
     end
 end

@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_filter :require_admin
+  before_action :set_project, only: [:show, :edit, :update, :destroy]  
 
   # GET /projects
   # GET /projects.json
@@ -80,5 +81,15 @@ class ProjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:name, :date_ini, :date_end, :description, :cost_hr, :cliente_id, :leader_id, :usuario_ids => [])
+    end
+
+    def require_admin
+      if current_usuario      
+        if current_usuario.admin?
+          true
+        else
+          redirect_to root_path(), flash: { notice: "you don't have permission to access."}
+        end
+      end
     end
 end

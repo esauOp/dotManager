@@ -1,70 +1,65 @@
-// Some general UI pack related JS
-// Extend JS String with repeat method
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
+// GO AFTER THE REQUIRES BELOW.
+//
+//= require jquery
+//= require jquery_ujs
 //= require bootstrap-datepicker
-String.prototype.repeat = function(num) {
-    return new Array(num + 1).join(this);
-};
+//= require turbolinks
+//= require bootstrap
+//= require_tree .
 
-(function($) {
 
-  // Add segments to a slider
-  $.fn.addSliderSegments = function (amount) {
-    return this.each(function () {
-      var segmentGap = 100 / (amount - 1) + "%"
-        , segment = "<div class='ui-slider-segment' style='margin-left: " + segmentGap + ";'></div>";
-      $(this).prepend(segment.repeat(amount - 2));
-    });
-  };
+var time  = document.getElementById("tasktimervalue");
+// var timer = time.value;
+// time.value = '00:00:00'
 
-  $(function() {
-  
-    // Todo list
-    $(".todo li").click(function() {
-        $(this).toggleClass("todo-done");
-    });
+if(time)
+{
+	
+// 	var t = new Date();
 
-    // Custom Select
-    $("select[name='herolist']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
+// 	t= t.getHours()+":"+t.getMinutes()+":"+t.getSeconds()
+// 	t = timeToSeconds(t);
 
-    // Tooltips
-    $("[data-toggle=tooltip]").tooltip("show");
+// 	timer = t - timer;
+	tnow = new Date();
 
-    // Tags Input
-    $(".tagsinput").tagsInput();
+	tnow.setHours(0);
+	tnow.setMinutes(0);
+	tnow.setSeconds(0);
+	tnow.setSeconds(tnow.getSeconds() + timeToSeconds(time.value))
 
-    // jQuery UI Sliders
-    var $slider = $("#slider");
-    if ($slider.length) {
-      $slider.slider({
-        min: 1,
-        max: 5,
-        value: 2,
-        orientation: "horizontal",
-        range: "min"
-      }).addSliderSegments($slider.slider("option").max);
-    }
+// 	// t.setSeconds(t.getSeconds() + (timer*-1));
+// 	timer  = document.getElementById("tasktimervalue");
 
-    // Placeholders for input/textarea
-    $("input, textarea").placeholder();
+	setInterval(function () {
+		tnow.setSeconds(tnow.getSeconds() + 1)
+		var hh = tnow.getHours();
+		var mm = tnow.getMinutes();
+		var ss = tnow.getSeconds();
 
-    // Make pagination demo work
-    $(".pagination a").on('click', function() {
-      $(this).parent().siblings("li").removeClass("active").end().addClass("active");
-    });
+		//if (hh > 12) {hh = hh - 12;}
 
-    $(".btn-group a").on('click', function() {
-      $(this).siblings().removeClass("active").end().addClass("active");
-    });
+		if (hh < 10) {hh = "0"+hh;}
+		if (mm < 10) {mm = "0"+mm;}
+		if (ss < 10) {ss = "0"+ss;}
 
-    // Disable link clicks to prevent page scrolling
-    $('a[href="#fakelink"]').on('click', function (e) {
-      e.preventDefault();
-    });
+		time.value = hh+":"+mm+":"+ss;
 
-    // Switch
-    $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();
-    
-  });
-  
-})(jQuery);
+	    //timer.value = tnow.getHours()+":"+tnow.getMinutes()+":"+tnow.getSeconds()
+	}, 1000);
+}
 
+function timeToSeconds(time) {
+    time = time.split(/:/);
+    return (time[0] * 3600) + (time[1] * 60) + (time[2] *1);
+}

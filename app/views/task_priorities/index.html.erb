@@ -16,7 +16,7 @@
         <td><%= task_priority.name %></td>
         <td><%= link_to 'Show', task_priority %></td>
         <td><%= link_to 'Edit', edit_task_priority_path(task_priority) %></td>
-        <td><%= link_to 'Destroy', task_priority, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Destroy', task_priority, method: :delete, :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %></td>
       </tr>
     <% end %>
   </tbody>
