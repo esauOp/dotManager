@@ -38,9 +38,9 @@ module ApplicationHelper
 	def route_title
 		if current_page?(root_path)
 			"Dashboard"
-		elsif current_page?(usuarios_path)			
+		elsif current_page?(teams_path)			
 			"Teams"
-		elsif params[:controller] == 'usuarios/new'
+		elsif current_page?(usuarios_path)
 			"Users"
 		elsif params[:controller] == 'usuarios/edit'
 			"Users"
