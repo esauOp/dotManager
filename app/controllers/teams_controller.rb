@@ -1,5 +1,7 @@
 class TeamsController < ApplicationController
   before_filter :require_admin
+  before_action :set_team, only: [:edit, :update, :destroy]
+
   def index
   	@teams = Team.all
 
@@ -32,7 +34,7 @@ class TeamsController < ApplicationController
     respond_to do |format|
       if @team.save
         flash[:notice] = 'Team was successfully created.'
-        format.html {redirect_to(root_path)}
+        format.html {redirect_to(teams_path)}
       else
         format.html {render "new"}
       end
@@ -40,12 +42,37 @@ class TeamsController < ApplicationController
     end
   end
 
+  def destroy
+    @team.destroy
+    respond_to do |format|
+      format.html { redirect_to teams_path }
+      format.json { head :no_content }
+    end
+  end
+
   def edit
   end
+
+  def update
+    respond_to do |format|
+      if @team.update(team_params)
+        format.html { redirect_to teams_path, notice: 'Team was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @task_priority.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
 private
   def team_params
     params.require(:team).permit(:name, :description, :usuario_ids => [])
+  end
+
+  def set_team
+    @team = Team.find(params[:id])
   end
 
   def require_admin
@@ -53,7 +80,7 @@ private
         if current_usuario.admin?
           true
         else
-          redirect_to root_path(), flash: { alert: "you don't have permission to access."}
+          redirect_to root_path(), flash: { alert: "You don't have permission to access."}
         end
       end
     end
