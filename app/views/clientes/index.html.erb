@@ -9,8 +9,7 @@
 				<th><%= @clientes.human_attribute_name(:city) %></th>
 				<th><%= @clientes.human_attribute_name(:state) %></th>
 				<th><%= @clientes.human_attribute_name(:zip) %></th>
-				<th>Edit</th>
-				<th>Delete</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>		
@@ -22,8 +21,12 @@
 				<td><%= client.city %></td>
 				<td><%= client.state %></td>
 				<td><%= client.zip %></td>
-				<td><%= link_to '.edit', edit_cliente_path(client) %></td>
-				<td><%= link_to '.destroy', cliente_path(client), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %></td>
+				<td>
+					<div class="btn-group btn-group-xs">
+						<%= link_to '.edit', edit_cliente_path(client), :class => "btn btn-info" %>
+						<%= link_to '.destroy', cliente_path(client), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => "btn btn-danger" %>
+					</div>
+				</td>
 			</tr>		
 		<%end%>
 		</tbody>
