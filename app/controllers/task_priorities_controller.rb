@@ -29,8 +29,8 @@ class TaskPrioritiesController < ApplicationController
 
     respond_to do |format|
       if @task_priority.save
-        format.html { redirect_to @task_priority, notice: 'Task priority was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @task_priority }
+        format.html { redirect_to task_priorities_path, notice: 'Task priority was successfully created.' }
+        format.json { render action: 'show', status: :created, location: task_priorities_path }
       else
         format.html { render action: 'new' }
         format.json { render json: @task_priority.errors, status: :unprocessable_entity }
@@ -43,7 +43,7 @@ class TaskPrioritiesController < ApplicationController
   def update
     respond_to do |format|
       if @task_priority.update(task_priority_params)
-        format.html { redirect_to @task_priority, notice: 'Task priority was successfully updated.' }
+        format.html { redirect_to task_priorities_path, notice: 'Task priority was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
