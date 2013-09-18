@@ -20,7 +20,7 @@
 <%= link_to("Start", {:action => :run_stop, :id => @task}, :method => :put)%>
  -->
  <% if !@task.running %>
-	<%= button_to 'Start', run_stop_project_task_path(:id => @task), :method => :put, :class => "btn btn-info" %>
+	<%= button_to 'Start', run_stop_project_task_path(:id => @task), :method => :put, :class => "btn btn-success" %>
 <% else %>
 	<%= button_to 'Stop', run_stop_project_task_path(:id => @task), :method => :put, :class => "btn btn-danger" %>
 <% end %>

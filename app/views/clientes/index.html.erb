@@ -23,8 +23,8 @@
 				<td><%= client.zip %></td>
 				<td>
 					<div class="btn-group btn-group-xs">
-						<%= link_to '.edit', edit_cliente_path(client), :class => "btn btn-info" %>
-						<%= link_to '.destroy', cliente_path(client), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => "btn btn-danger" %>
+						<%= link_to 'edit', edit_cliente_path(client), :class => "btn btn-info" %>
+						<%= link_to 'destroy', cliente_path(client), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => "btn btn-danger" %>
 					</div>
 				</td>
 			</tr>		
@@ -33,8 +33,5 @@
 	</table>
 </div>
 
-<div class="row">
-		<div class="col-md-4">			
-			<%= link_to 'Nuevo', new_cliente_path %>
-		</div>
-	</div>
+<%= link_to 'New Client', new_cliente_path, :class => "btn btn-info" %>
+
