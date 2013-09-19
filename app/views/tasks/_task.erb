@@ -13,5 +13,8 @@
 	       <% end %>
        </div>
    </td>
-   <td><%= button_to "Destroy", [task.project, task], method: :delete, :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, form_class: "btn-group btn-group-xs", :class => "btn btn-danger boton" %></td>
+   <td> <% if current_usuario.admin %>
+   	<%= button_to "Destroy", [task.project, task], method: :delete, :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, form_class: "btn-group btn-group-xs", :class => "btn btn-danger boton" %>
+   	<% end %>
+   </td>
 </tr>

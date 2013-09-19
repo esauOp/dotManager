@@ -2,14 +2,30 @@
 <div class="panel panel-default">
 	<div class="panel-heading">Details</div>
 		<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+					<th>Estimated (Hrs)</th>
+					<th></th>
+					<th>Actual Time (Hr)</th>
+					<th>Milestone</th>
+					<th></th>
+				</tr>
+			</thead>
 			<tbody>
 				<tr>
 					<td><%= @task.id %></td>
 					<td><%= @task.name %></td>
 					<td><%= @task.estimated_time %></td>
 					<td><%= @task.description %></td>
-					<td><%= @task.actual_time %></td>
-					<td><%= @task.milestone %></td>
+					<td><% if @task.actual_time.blank? %>
+						0
+						<% else %>
+						<%= @task.actual_time.round(3) %>
+						<% end %>
+					</td>
+					<td> <%= check_box_tag :milestone, "1", @task.milestone, disable: true %> </td>
 					<td><%= @task.running %></td>
 				</tr>
 			</tbody>

@@ -1,7 +1,8 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:destroy]
+  
   #before_filter :require_admin, only: [:destroy]
   before_filter :require_owner, only: [:edit, :update]
+  before_action :set_task, only: [:edit, :update, :destroy]
   
 
   def index
@@ -18,18 +19,30 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @project = Project.find(params[:project_id])
   end
 
   def create
   	@project = Project.find(params[:project_id])
     #@comment = @blog_post.comments.build(params[:comment])
     @task = @project.tasks.create(task_params)
-    TaskMailer.notification_email(current_usuario).deliver
+    @usermailed = Usuario.find(@task.assignee_id)
+    TaskMailer.notification_email(@usermailed).deliver
 
     if @task.save
-      redirect_to project_path(@project_path), flash: { notice: 'Your task was asigned.'}
+      redirect_to project_path(@project), flash: { notice: 'Your task was created.'}
     else
-      redirect_to project_path(@project_path), flash: { error: 'Failes to post your comment, ja!'}
+      redirect_to project_path(@project), flash: { error: 'Failes to save the task, ja!'}
+    end   
+  end
+
+  def update
+    @project = Project.find(params[:project_id])
+
+    if @task.update(task_params)
+      redirect_to project_path(@project), flash: { notice: 'Your task was updated.'}
+    else
+      redirect_to project_path(@project), flash: { error: 'Failes to update the task, ja!'}
     end   
   end
 
