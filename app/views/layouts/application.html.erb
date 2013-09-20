@@ -4,6 +4,7 @@
   <title>Manager</title>
   
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   
   <%= csrf_meta_tags %>
 </head>
@@ -35,9 +36,9 @@
 </div>
 <%  end %>
 
-
-<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-<%= javascript_include_tag "fullcalendar", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "bootstrap-dropdown-hover", "data-turbolinks-track" => false %>
+<%= javascript_include_tag "fullcalendar", "data-turbolinks-track" => false %>
+<%= javascript_include_tag "timer.js" %>
 <%= javascript_include_tag "calendar.js" %>
 
 <script type="text/javascript">

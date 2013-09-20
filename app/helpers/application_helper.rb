@@ -100,7 +100,7 @@ module ApplicationHelper
 
 			content_tag(:div, class: "timermenu") do
 				content_tag(:label, link_to("Running task: " + @tasktimer.name.to_s + " - Time: ", project_task_path(@tasktimer.project_id, @tasktimer.id))) +
-				content_tag(:input, '', id: "tasktimervalue", value: stime) +
+				content_tag(:input, '', id: "tasktimervalue", value: stime, disabled: true) +
 				content_tag(:span, 'min')
 			end
 		end
