@@ -12,11 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+// require fullcalendar
 //= require bootstrap
 //= require turbolinks
-//= require fullcalendar
-//= require jquery.rest
-//= require_tree .
+// require jquery.rest
+// require_tree .
+//= require bootstrap-dropdown-hover
 // require bootstrap-datepicker
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es
