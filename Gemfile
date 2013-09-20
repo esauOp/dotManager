@@ -46,6 +46,11 @@ gem "bootstrap-datepicker-rails"
 # Settingslogic is a simple configuration / settings solution.
 gem 'settingslogic'
 
+#Rails builder for creating tables and calendars
+# gem "watu_table_builder", :require => "table_builder"
+
+gem 'fullcalendar-rails'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'  

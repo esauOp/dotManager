@@ -62,6 +62,8 @@ module ApplicationHelper
 			if !@task.blank?
 				@task.name.to_s
 			end
+		elsif current_page?(calendar_path)
+			"Calendar"
 		else
 			#Rails.root.to_s
 			arr = request.original_fullpath.to_s.gsub(/-+/, ' ').split("/")

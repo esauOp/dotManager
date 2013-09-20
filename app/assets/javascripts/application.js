@@ -14,10 +14,12 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
+//= require fullcalendar
 //= require_tree .
 // require bootstrap-datepicker
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es
+
 
 
 
@@ -66,3 +68,6 @@ function timeToSeconds(time) {
     time = time.split(/:/);
     return (time[0] * 3600) + (time[1] * 60) + (time[2] *1);
 }
+
+
+

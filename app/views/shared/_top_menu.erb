@@ -15,7 +15,10 @@
           <!-- <a href="#">Dashboard</a> -->
           <%= link_to "Dashboard", root_path %>
         </li>
-        <li class="<%= route_to_content 'active', usuarios_path %>"><a href="#about">Calendar</a></li>
+        <li class="<%= route_to_content 'active', usuarios_path %>">
+          <!-- <a href="#about">Calendar</a> -->
+          <%= link_to "Calendar", calendar_path %>
+        </li>
         <li><a href="#contact">Gant</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-hover="dropdown">Projects <b class="caret"></b></a>

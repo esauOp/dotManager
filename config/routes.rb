@@ -1,6 +1,5 @@
 DotManager::Application.routes.draw do
     
-
   # categories and products are a DEMO
   # resources :products
   # resources :categories
@@ -29,6 +28,9 @@ DotManager::Application.routes.draw do
   scope "/" do
     resources :usuarios    
   end
+
+  #get "calendar/index"
+  get "/calendar", :to => "calendar#index"
 
   #devise_for :usuarios
   # The priority is based upon order of creation: first created -> highest priority.
