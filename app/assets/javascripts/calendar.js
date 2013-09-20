@@ -1,4 +1,4 @@
-
+$(document).ready(function() {
 // full calendar ajax
 
 	var date = new Date();
@@ -7,7 +7,7 @@
 	var y = date.getFullYear();
 	
 	$('#calendar').fullCalendar({
-		editable: true,        
+		editable: false,        
 		header: {
             left: 'prev,next today',
             center: 'title',
@@ -27,7 +27,7 @@
         // a future calendar might have many sources.        
         eventSources: [{
             url: '/calendar',
-            color: '#2c2c2c',
+            color: '#999',
             textColor: '#fff',
             ignoreTimezone: false
         }],
@@ -51,3 +51,4 @@
         },
 	});
 
+});

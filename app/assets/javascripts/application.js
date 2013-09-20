@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require turbolinks
 //= require fullcalendar
+//= require jquery.rest
 //= require_tree .
 // require bootstrap-datepicker
 //= require bootstrap-datepicker/core

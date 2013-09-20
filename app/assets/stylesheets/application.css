@@ -11,8 +11,8 @@
  *= require_tree .
  *= require bootstrap
  *= require bootstrap-datepicker
- *= require_self
  *= require fullcalendar
+ *= require_self
  */
 
  html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,
@@ -476,25 +476,16 @@ bootstrap-datepicker
 
 /* Calendar */
 
-.calendar{
-	position: relative;
-
+table.fc-border-separate {
+	background-color: #fff;
+}
+	
+.fc-border-separate thead {
+	background-color: #f0f0f0;
 }
 
-.calendar h2{
-	text-align: center;
-	margin-bottom: 35px;
-}
 
-.calendar td{
-	background: #fff;
-	color: #777;
-	height: 80px;
-	vertical-align: top;
-	font-size: 15px;
-	width: 14.25%;
+.fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
+	 background: #f0f0f0;
 }
-
-.calendar .today{
-	background-color: #d7f2ff;
-}
+	
