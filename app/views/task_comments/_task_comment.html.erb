@@ -1,15 +1,35 @@
-<thead>
-	<tr>
-		<th>Commenter:</th>
-	</tr>
-</thead>
-<tbody>
-	<tr style="background-color:#fff;">
-		<td><%= task_comment.content %></td>
-		
-	</tr>
-</tbody>
-    
+<tr>
+	<td>
+		<div class="usercomment">
+			By Me:
+		</div>
+		<div class="parentcomment">
+			<%= task_comment.content %>
+		</div>
+
+		<table style="width:95%; margin-left:5%">
+		<tbody>
+			<tr>
+				<td>		
+					<%= render task_comment.replies %>
+						
+					<%= form_for([task_comment, task_comment.replies.build]) do |f| %>
+					  <p>
+					    <%= f.label :content %><br />
+					    <%= f.text_area :content %>
+					  </p>
+					  
+					    <%= f.submit %>
+					  
+					<% end %>		
+				</td>
+			</tr>
+			
+		</tbody>
+		</table>
+
+	</td>
+</tr>
  <!-- 
 <p>
   <strong>Comment:</strong>

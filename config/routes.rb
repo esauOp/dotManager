@@ -13,7 +13,9 @@ DotManager::Application.routes.draw do
   resources :task_statuses
   resources :projects, :shallow => true do
     resources :tasks do
-      resources :task_comments
+      resources :task_comments do
+        resources :replies
+      end
       
       member do
         put 'run_stop'

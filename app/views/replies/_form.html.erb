@@ -1,5 +1,5 @@
 
-<%= form_for([@task, @task.task_comments.build]) do |f| %>
+<%= form_for([task_comment, task_comment.replies.build]) do |f| %>
   <p>
     <%= f.label :content %><br />
     <%= f.text_area :content %>

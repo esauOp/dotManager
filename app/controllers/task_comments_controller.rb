@@ -22,9 +22,10 @@ class TaskCommentsController < ApplicationController
 	    redirect_to @task		
 	end
 
+
 	private
 		def comment_params
-			params.require(:task_comment).permit(:content, :reply, :task_id, :usuario_id)			
+			params.require(:task_comment).permit(:content, :task_id, :usuario_id)			
 		end
 
 end
