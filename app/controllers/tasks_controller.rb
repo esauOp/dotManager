@@ -14,12 +14,12 @@ class TasksController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:project_id])
+    #@project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
   end
 
   def edit
-    @project = Project.find(params[:project_id])
+    #@project = Project.find(params[:project_id])
   end
 
   def create
@@ -37,7 +37,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    @project = Project.find(params[:project_id])
+    #@project = Project.find(params[:project_id])
 
     if @task.update(task_params)
       redirect_to project_path(@project), flash: { notice: 'Your task was updated.'}

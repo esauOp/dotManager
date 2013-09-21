@@ -36,7 +36,16 @@
 <%= link_to("Start", {:action => :run_stop, :id => @task}, :method => :put)%>
  -->
  <% if !@task.running %>
-	<%= button_to 'Start', run_stop_project_task_path(:id => @task), :method => :put, :class => "btn btn-success" %>
+	<%= button_to 'Start', run_stop_task_path(:id => @task), :method => :put, :class => "btn btn-success" %>
 <% else %>
-	<%= button_to 'Stop', run_stop_project_task_path(:id => @task), :method => :put, :class => "btn btn-danger" %>
+	<%= button_to 'Stop', run_stop_task_path(:id => @task), :method => :put, :class => "btn btn-danger" %>
 <% end %>
+
+
+<h4>Add a comment:</h4>
+<%= render "task_comments/form" %>
+
+<h4>Comments</h4>
+<table class="table">
+<%= render @task.task_comments %>
+</table>

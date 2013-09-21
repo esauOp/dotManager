@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130905201751) do
+ActiveRecord::Schema.define(version: 20130920224014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(version: 20130905201751) do
 
   create_table "task_cats", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "task_comments", force: true do |t|
+    t.text     "content"
+    t.boolean  "reply"
+    t.integer  "task_id"
+    t.integer  "usuario_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

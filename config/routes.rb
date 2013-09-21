@@ -11,11 +11,13 @@ DotManager::Application.routes.draw do
   resources :task_cats
   resources :task_priorities
   resources :task_statuses
-  resources :projects do
+  resources :projects, :shallow => true do
     resources :tasks do
+      resources :task_comments
+      
       member do
         put 'run_stop'
-      end
+      end      
     end  
   end
   

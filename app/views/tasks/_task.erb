@@ -4,8 +4,8 @@
 	<td style="text-align: right;">
 		<div class="btn-group btn-group-xs"> 
 			<% if current_usuario.admin || task.assignee_id == current_usuario.id %>
-			<%= link_to 'Show', project_task_path(@project, task), :class => "btn btn-info" %>
-			<%= link_to 'Edit', edit_project_task_path(@project, task), :class => "btn btn-info" %>
+			<%= link_to 'Show', task_path(task), :class => "btn btn-info" %>
+			<%= link_to 'Edit', edit_task_path(task), :class => "btn btn-info" %>
 			<!-- 
 			< link_to 'Destroy', [task.project, task], :method => :delete, :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } > 
 		-->
@@ -14,7 +14,7 @@
        </div>
    </td>
    <td> <% if current_usuario.admin %>
-   	<%= button_to "Destroy", [task.project, task], method: :delete, :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, form_class: "btn-group btn-group-xs", :class => "btn btn-danger boton" %>
+   	<%= button_to "Destroy", [task], method: :delete, :data => { :confirm => t('confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, form_class: "btn-group btn-group-xs", :class => "btn btn-danger boton" %>
    	<% end %>
    </td>
 </tr>
