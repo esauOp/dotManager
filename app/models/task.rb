@@ -1,6 +1,7 @@
 class Task < ActiveRecord::Base
 	belongs_to :project
 	has_many :task_histories
+  has_many :task_comments
 
 	# def to_param
 	# 	#{}"#{id}-#{name}"	
