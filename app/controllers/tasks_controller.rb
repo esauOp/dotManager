@@ -26,8 +26,11 @@ class TasksController < ApplicationController
   	@project = Project.find(params[:project_id])
     #@comment = @blog_post.comments.build(params[:comment])
     @task = @project.tasks.create(task_params)
+
     @usermailed = Usuario.find(@task.assignee_id)
-    TaskMailer.notification_email(@usermailed).deliver
+    @title = @task.name
+
+    TaskMailer.notification_email(@usermailed, @title).deliver
 
     if @task.save
       redirect_to project_path(@project), flash: { notice: 'Your task was created.'}
