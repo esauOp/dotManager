@@ -98,7 +98,7 @@ class TasksController < ApplicationController
     end
 
     if @task.update_attributes(:actual_time => @task.actual_time, :running => @task.running, :version => @task.version)
-      redirect_to project_task_path(@task.project_id, @task.id) #, flash: {notice: 'Task clicked!.'}
+      redirect_to task_path(@task.id) #, flash: {notice: 'Task clicked!.'}
       #   format.html { redirect_to @task, notice: 'Product was successfully updated.' }
       #   format.json { head :no_content }
       # else
