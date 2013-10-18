@@ -16,7 +16,7 @@ class Task < ActiveRecord::Base
       :end => date_end.rfc822,
       :allDay => true,
       :recurring => false,
-      :url => Rails.application.routes.url_helpers.task_path(self.project_id, self.id)
+      :url => Rails.application.routes.url_helpers.task_path(self.id)
     }
     
   end
