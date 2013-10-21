@@ -27,10 +27,9 @@
 %>
 
 
-<%  if current_usuario.admin %>
-	<div class="btn-group">
+<div class="btn-group">
+	<%  if current_usuario.admin %>
 		<%= link_to 'Edit', edit_project_path(@project), :class => "btn btn-info" %>
-		
-	</div>
+	<%  end %>
 	<%= link_to 'New Task', new_project_task_path(@project), :class => "btn btn-info" %> 
-<%  end %>
+</div>
