@@ -29,7 +29,7 @@ $(document).ready(function() {
             url: '/calendar',
             color: '#999',
             textColor: '#fff',
-            ignoreTimezone: false
+            ignoreTimezone: true
         }],
         
         timeFormat: 'h:mm t{ - h:mm t} ',
