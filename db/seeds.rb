@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 puts 'SETTING UP DEFAULT USER LOGIN'
-user = Usuario.create([{ name: 'Admin', last_name: 'Group', email: 'admin@dom.com', password: 'password', password_confirmation: 'password', role: 1, admin: true  }])
+user = Usuario.create([{ name: 'Admin', last_name: 'Group', email: 'admin@domain.io', password: 'password', password_confirmation: 'password', role: 1, admin: true  }])
 puts 'Admin user created'
-#user = Usuario.create! :email => 'admin@dom.com', :password => 'password', :password_confirmation => 'password', :role => '1'
+#user = Usuario.create! :email => 'admin@domain.com', :password => 'password', :password_confirmation => 'password', :role => '1'
 
 # task_categorias = [
 #   [ "Germany", 81831000 ],
