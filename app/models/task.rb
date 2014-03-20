@@ -1,5 +1,7 @@
 class Task < ActiveRecord::Base
+
 	belongs_to :project
+  belongs_to :usuario
 	has_many :task_histories
   has_many :task_comments
 
