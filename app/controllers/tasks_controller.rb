@@ -16,6 +16,7 @@ class TasksController < ApplicationController
   def show
     #@project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
+    
   end
 
   def edit
@@ -29,6 +30,7 @@ class TasksController < ApplicationController
 
     @usermailed = Usuario.find(@task.assignee_id)
     @title = @task.name
+    @task.usuario_id = @task.assignee_id
 
     TaskMailer.notification_email(@usermailed, @title).deliver
 

@@ -1,6 +1,7 @@
 <tr>
 	<td><%= task.id %></td>
 	<td><%= task.name %></td>
+	<td><%= task.usuario.name %></td>
 	<td style="text-align: right;">
 		<div class="btn-group btn-group-xs"> 
 			<% if current_usuario.admin || task.assignee_id == current_usuario.id %>

@@ -12,7 +12,7 @@ class Task < ActiveRecord::Base
 	def as_json(options = {})
     {
       :id => self.id,
-      :title => self.name,
+      :title => self.name + " - " + self.usuario.name,
       :description => self.description || "",
       :start => date_ini,
       :end => date_end,
