@@ -16,7 +16,7 @@ class CreateTasks < ActiveRecord::Migration
       t.integer :task_cat_id
       t.integer :task_priority_id
       t.integer :assignee_id
-      
+      t.integer :usuario_id
       t.timestamps
     end
   end
