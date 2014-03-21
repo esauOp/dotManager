@@ -13,8 +13,8 @@ class DashboardController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv  { send_data @tasks.as_csv }
-      format.xls  #{ send_data @projects.as_csv(col_sep: "\t") }
+      #format.csv  { send_data @tasks.as_csv }
+      #format.xls  #{ send_data @projects.as_csv(col_sep: "\t") }
     end
   end
 end

@@ -11,8 +11,28 @@
 <div class="row">
   <div class="col-md-8">.col-md-8</div>
   <div class="col-md-4">
-  	<%= link_to 'CSV', dashboard_index_path + ".xls", :class => "btn btn-info" %>
+  	<%= form_tag report_index_path + ".xls", method: :get do %>
+  	<div>
+  		<%= collection_select(:assignee_id, :id, Usuario.find(:all, :order => "name"), :id, :name, prompt: true) %>
+  	</div>
+  	<div>
+		<%= collection_select(:project, :id, Project.find(:all, :order => "name"), :id, :name, {prompt: true}, {:class=>'esau'} ) %>
+	</div>
+
+	<div>
+		<select name="assignee[id]">
+			<option value="0">--all--</option>
+	    <% Usuario.all.each do |author| %>
+	        <option value="<%= author.id %>"><%= author.name %></option>
+	    <% end %>
+	</select>
+	</div>
+
+  		<%=submit_tag '.xls', :class => "btn btn-info" %>
+	<% end %>
+
   </div>
+
 </div>
 
 
