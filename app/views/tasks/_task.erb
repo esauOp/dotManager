@@ -4,7 +4,7 @@
 	<td><%= task.usuario.name %></td>
 	<td style="text-align: right;">
 		<div class="btn-group btn-group-xs"> 
-			<% if current_usuario.admin || task.assignee_id == current_usuario.id %>
+			<% if current_usuario.admin || task.usuario_id == current_usuario.id %>
 			<%= link_to 'Show', task_path(task), :class => "btn btn-info" %>
 			<%= link_to 'Edit', edit_task_path(task), :class => "btn btn-info" %>
 			<!-- 

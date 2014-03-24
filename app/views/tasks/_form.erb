@@ -44,8 +44,8 @@ form_for([@project,@task]) do |f|
     <%= f.collection_select :task_priority_id, TaskPriority.all, :id, :name, prompt: true %>
   </div>
   <div class="field">
-    <%= f.label :assignee_id %><br>
-    <%= f.collection_select :assignee_id, Usuario.all, :id, :name, prompt: true %>
+    <%= f.label :usuario_id %><br>
+    <%= f.collection_select :usuario_id, Usuario.all, :id, :name, prompt: true %>
   </div>
 
   <div class="actions">

@@ -28,9 +28,9 @@ class TasksController < ApplicationController
     #@comment = @blog_post.comments.build(params[:comment])
     @task = @project.tasks.create(task_params)
 
-    @usermailed = Usuario.find(@task.assignee_id)
+    @usermailed = Usuario.find(@task.usuario_id)
     @title = @task.name
-    @task.usuario_id = @task.assignee_id
+    #@task.usuario_id = @task.assignee_id
 
     TaskMailer.notification_email(@usermailed, @title).deliver
 
@@ -75,7 +75,7 @@ class TasksController < ApplicationController
       # @tasksupdate.running = false
       # @tasksupdate.update_attributes(:running => @tasksupdate.running)
       # Task.update_all("running = false", "assignee_id = " + current_usuario.id.to_s)
-      @lasttask = Task.where(assignee_id: current_usuario.id, running: true).first
+      @lasttask = Task.where(usuario_id: current_usuario.id, running: true).first
       if !@lasttask.blank?
         @lasthistory = TaskHistory.where(task_id: @lasttask.id, version: @lasttask.version).first_or_create
         @lasthistory.time = (Time.zone.now - @lasthistory.created_at.localtime) / 3600
@@ -111,7 +111,7 @@ class TasksController < ApplicationController
 
   private
     def task_params
-      params.require(:task).permit(:name, :date_ini, :date_end, :milestone, :estimated_time, :description, :task_status_id, :task_cat_id, :task_priority_id, :assignee_id )
+      params.require(:task).permit(:name, :date_ini, :date_end, :milestone, :estimated_time, :description, :task_status_id, :task_cat_id, :task_priority_id, :usuario_id )
     end
 
     def set_task
@@ -131,7 +131,7 @@ class TasksController < ApplicationController
     def require_owner
       @task = Task.find(params[:id])
       if current_usuario
-        if current_usuario.admin? || @task.assignee_id == current_usuario.id
+        if current_usuario.admin? || @task.usuario_id == current_usuario.id
           true
         else
           redirect_to root_path, flash: { error: "You don't have permission to do this."}

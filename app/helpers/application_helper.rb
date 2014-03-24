@@ -83,7 +83,7 @@ module ApplicationHelper
 		# 	@tasktimer = Task.where(assignee_id: current_usuario.id, running: true).first #Task.find(1)
 		# end
 		
-		@tasktimer = Task.where(assignee_id: current_usuario.id, running: true).first
+		@tasktimer = Task.where(usuario_id: current_usuario.id, running: true).first
 
 		#@tasktimer = Task.where(assignee_id: current_usuario.id, running: true).first_or_create
 		
