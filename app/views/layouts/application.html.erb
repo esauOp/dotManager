@@ -73,6 +73,11 @@ var checkout = $('#rpt_date_end').datepicker({
   checkout.hide();
 }).data('datepicker');
 
+
+$('#rpt_date_end').datepicker('update', now);
+now.setMonth(now.getMonth()-1);
+$('#rpt_date_ini').datepicker('update', now);
+
 </script>
 
 

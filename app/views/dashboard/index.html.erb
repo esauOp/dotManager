@@ -1,39 +1,113 @@
+<div class="row row-offcanvas row-offcanvas-right">
 
-<div class="jumbotron">
-  <h1>Dashboard</h1>
-  <% if current_usuario %>
-    <% if current_usuario.admin? %>
-      <h2>You're Admin!</h2>
-    <%end %>
-  <%end %>
-  
+  <div class="col-xs-12 col-sm-9">
+    <p class="pull-right visible-xs">
+      <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+  <!--
+    <div class="jumbotron">
+
+      <h1>Dashboard</h1>
+      <% if current_usuario %>
+        <% if current_usuario.admin? %>
+          <h2>You're Admin!</h2>
+        <%end %>
+      <%end %>
+
+    </div>
+  -->
+    <div class="row">
+      <div class="col-9">
+        
+        <!-- <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p> -->
+        <div class="tabla-striped" style="background-color: #fff; border-radius: 4px;
+border: 1px solid #ddd;">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th><h4>Top Tasks</h4></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @tasks.each do |task| %>
+              <tr>
+                <td><%= task.name %></td>
+                <td><%= task.name %></td>
+                <td><%= task.usuario.name %></td>
+
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <!-- <p><a class="btn btn-default" href="#" role="button">View details »</a></p> -->
+      </div><!--/span-->
+     
+    </div><!--/row-->
+
+  </div><!--/span-->
+
+  <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">Report</div>
+      <div class="panel-body">
+
+        <% if current_usuario %>
+        <% if current_usuario.admin? %>
+        
+        <%= form_tag report_index_path + ".xls", method: :get do %>
+        <!--
+        <div>
+          <%= collection_select(:project, :id, Project.find(:all, :order => "name"), :id, :name, {prompt: true}, {:class=>'input-sm  control-rpt'} ) %>
+        </div>
+        -->
+
+        <div>
+          <label for="">Project</label><br>
+          <select name="project[id]" class="input-sm  control-rpt">
+            <option value="0">--all--</option>
+            <% Project.all.each do |project| %>
+                <option value="<%= project.id %>"><%= project.name %></option>
+            <% end %>
+          </select>
+        </div>
+        <div>
+          <label for="Assigne">User</label><br>
+          <select name="assignee[id]" class="input-sm  control-rpt">
+            <option value="0">--all--</option>
+            <% Usuario.all.each do |author| %>
+                <option value="<%= author.id %>"><%= author.name %></option>
+            <% end %>
+        </select>
+        </div>
+        <div>
+          <label for="">Due Date</label><br>
+          <input id="rpt_date_ini" name="date_ini[date]" type="text" style="width:43%;" >
+          <span> - </span>
+          <input id="rpt_date_end" name="date_end[date]" type="text" style="width:43%;">
+        </div>
+        <div>
+          <br>
+          <%=submit_tag '.xls', :class => "btn btn-info" %>
+        </div>
+
+            
+        <% end %>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div><!--/span-->
 </div>
-<div class="row">
-  <div class="col-md-8">.col-md-8</div>
-  <div class="col-md-4">
-  	<%= form_tag report_index_path + ".xls", method: :get do %>
-  	<div>
-  		<%= collection_select(:assignee_id, :id, Usuario.find(:all, :order => "name"), :id, :name, prompt: true) %>
-  	</div>
-  	<div>
-		<%= collection_select(:project, :id, Project.find(:all, :order => "name"), :id, :name, {prompt: true}, {:class=>'esau'} ) %>
-	</div>
 
-	<div>
-		<select name="assignee[id]">
-			<option value="0">--all--</option>
-	    <% Usuario.all.each do |author| %>
-	        <option value="<%= author.id %>"><%= author.name %></option>
-	    <% end %>
-	</select>
-	</div>
-
-  		<%=submit_tag '.xls', :class => "btn btn-info" %>
-	<% end %>
-
-  </div>
-
-</div>
-
-
+<script>
+  $(document).ready(function () {
+  $('[data-toggle=offcanvas]').click(function () {
+    $('.row-offcanvas').toggleClass('active')
+  });
+});
+</script>
 

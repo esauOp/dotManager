@@ -488,4 +488,9 @@ table.fc-border-separate {
 .fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
 	 background: #f0f0f0;
 }
-	
+
+
+select.control-rpt {
+	margin: 5px;
+  	width: 150px;
+}

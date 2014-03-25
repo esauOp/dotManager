@@ -8,7 +8,8 @@ class DashboardController < ApplicationController
       @tasks = Task.all
     else
     #@projects = Project.all(:include => :usuarios, :conditions => ["usuarios.id = ?", current_usuario.id])     
-      @tasks = Task.includes(:usuarios).where(usuarios: { id:current_usuario.id })
+      @tasks = Task.where('(? = usuario_id ) ', current_usuario.id ).order("id ASC")
+      #Task.includes(:usuarios).where(usuarios: { id:current_usuario.id })
     end
 
     respond_to do |format|
