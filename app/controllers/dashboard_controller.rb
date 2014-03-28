@@ -5,10 +5,10 @@ class DashboardController < ApplicationController
   	# end
 
   	if current_usuario.admin      
-      @tasks = Task.all
+      @tasks = Task.all.limit(20)
     else
     #@projects = Project.all(:include => :usuarios, :conditions => ["usuarios.id = ?", current_usuario.id])     
-      @tasks = Task.where('(? = usuario_id ) ', current_usuario.id ).order("id ASC")
+      @tasks = Task.where('(? = usuario_id ) ', current_usuario.id ).order("id ASC").limit(10)
       #Task.includes(:usuarios).where(usuarios: { id:current_usuario.id })
     end
 
